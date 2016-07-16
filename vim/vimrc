@@ -1,0 +1,258 @@
+" set default
+set nocompatible
+
+" init pathogen
+execute pathogen#infect()
+filetype plugin indent on
+syntax on
+
+" set encoding
+set encoding=utf-8
+
+" performance settings
+set re=1
+set lazyredraw
+
+" indent settings
+set modelines=0
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+" always display status of the line
+set laststatus=2
+
+" set line numbers
+set number
+set numberwidth=2
+
+" make mouse work
+set mouse=a
+
+" highlight column, line and length-line
+set cursorline
+set cursorcolumn
+set cc=80
+
+" make backspace work
+set backspace=indent,eol,start
+
+" disable autocomment on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+"### mapping
+
+"## leader key mapping
+"# set leader key
+let mapleader = "\<Space>"
+
+"## non-leader key mapping
+
+"# escape input mode with jj
+inoremap jj <ESC>
+
+"# tab switch
+nnoremap H gT
+nnoremap L gt
+
+"# ctrl-c to copy in sys buffer from visual mode
+vmap <C-c> "+y
+
+"---------------------
+
+" colorscheme settings
+colorscheme monokai
+set t_Co=256
+
+
+"### plugin settings
+
+"## NERDtree -----------------
+
+"# mapping
+map <C-n> :NERDTreeToggle<CR>
+
+"# autostart nerdtree
+autocmd VimEnter * NERDTree
+
+"# nerdtree window size
+let g:NERDTreeWinSize = 27
+
+"# other settings
+autocmd VimEnter * wincmd p
+autocmd StdinReadPre * let s:std_in=1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"## NERDcommenter -----------
+
+"# mapping
+map <C-_> <leader>c<Space>
+
+"## git gutter -------------
+
+"# other settings
+let g:gitgutter_realtime = 1
+
+"## autoformat ------------
+
+"# mapping
+nnoremap <leader>b :Autoformat<CR>
+
+"## table mode ------------
+
+"# mapping
+"nnoremap <leader>t :TableModeToggle<CR>
+"nnoremap <leader>tr :TableModeRealign<CR>
+
+"# set cornet
+let g:table_mode_corner="|"
+
+"## snipmate -------------
+
+"# mapping
+imap <C-j> <Plug>snipMateNextOrTrigger
+smap <C-j> <Plug>snipMateNextOrTrigger
+
+"## neocomplete ---------
+
+"# settings
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"-------
+let g:neocomplete#enable_fuzzy_completion = 1
+let g:neocomplete_enable_fuzzy_completion_start_length = 2
+let g:neocomplete_enable_camel_case_completion = 0
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#max_list = 10
+let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplete#enable_auto_select = 0
+"------
+let g:neocomplcache_skip_auto_completion_time = ""
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"-----
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+"-----
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"-----
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+"-----
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"-----
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+"----
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+ let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+ let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+ let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"----
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+"## CtrlP ---------------
+
+"# autoclear cache
+function! SetupCtrlP()
+  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
+    augroup CtrlPExtension
+      autocmd!
+      autocmd FocusGained  * CtrlPClearCache
+      autocmd BufWritePost * CtrlPClearCache
+    augroup END
+  endif
+endfunction
+if has("autocmd")
+  autocmd VimEnter * :call SetupCtrlP()
+endif
+
+"# mapping
+map <C-t> :CtrlP<CR>
+
+"## Tagbar
+
+"# mapping
+nmap <leader>i :TagbarToggle<CR>
+
+
+"## Easymotion ---------
+
+"# mapping
+" <Leader>s{char} to move to {char}
+map  <Leader>s <Plug>(easymotion-bd-f)
+nmap <Leader>s <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+"nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+"map <Leader>l <Plug>(easymotion-bd-jk)
+"nmap <Leader>l <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+"## vim-test
+
+"# mapping
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+ "make test commands execute using vimux
+"let test#strategy = "vimux"
+
+"## vimux
+
+" mappong
+
+"# settings
+let g:VimuxUseNearest = 0
+let g:VimuxHeight = "40"
+
