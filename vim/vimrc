@@ -40,11 +40,19 @@ set backspace=indent,eol,start
 " disable autocomment on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" set foldmethod from manual to syntax
+ set foldmethod=indent
+
+" disable autofolding on open file
+" set nofoldenable
+
 "### mapping
 
 "## leader key mapping
 "# set leader key
 let mapleader = "\<Space>"
+
+nnoremap <leader>r zR
 
 "## non-leader key mapping
 
@@ -57,6 +65,10 @@ nnoremap L gt
 
 "# ctrl-c to copy in sys buffer from visual mode
 vmap <C-c> "+y
+
+"# macroses map
+nnoremap Q @q
+vnoremap Q :norm @q<cr>
 
 "---------------------
 
@@ -246,13 +258,13 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
  "make test commands execute using vimux
-"let test#strategy = "vimux"
+let test#strategy = "vimux"
 
 "## vimux
 
 " mappong
 
 "# settings
-let g:VimuxUseNearest = 0
+"let g:VimuxUseNearest = 0
 let g:VimuxHeight = "40"
 
