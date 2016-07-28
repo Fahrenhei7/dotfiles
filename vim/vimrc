@@ -37,11 +37,14 @@ set cc=80
 " make backspace work
 set backspace=indent,eol,start
 
+" settig relative nubmer
+"set relativenumber
+
 " disable autocomment on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " set foldmethod from manual to syntax
-set foldmethod=indent
+set foldmethod=syntax
 
 " disable autofolding on open file
 set nofoldenable
