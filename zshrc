@@ -90,3 +90,55 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 if [[ ! $TERM =~ screen ]]; then
   exec tmux -2
 fi
+
+
+
+
+# git aliases
+alias ga='git add'
+alias gaa='git add -A'
+alias gc='git commit'
+alias gs='git status'
+alias gp='git push'
+alias gcl='git clone'
+alias gch='git checkout'
+alias gpu='git pull'
+
+# vim aliases
+alias vi='vim'
+alias cvim='vim -u NONE'
+alias vimc='vim ~/.vimrc'
+alias vima='vim +96 ~/.zshrc'
+
+# rails aliases
+alias rs='rails server'
+alias rc='rails console'
+alias rr='rails routes'
+alias rdm='rails db:migrate'
+alias rg='rails generate'
+alias rgc='rails generate controller'
+alias rgm='rails generate migration'
+alias rgs='rails generate scaffold'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
