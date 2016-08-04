@@ -120,6 +120,8 @@ alias rgc='rails generate controller'
 alias rgm='rails generate migration'
 alias rgs='rails generate scaffold'
 
+# other aliases
+alias hp='haroopad'
 
 
 
@@ -142,3 +144,6 @@ alias rgs='rails generate scaffold'
 
 
 
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

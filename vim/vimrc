@@ -211,26 +211,31 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "## CtrlP ---------------
 
 "# autoclear cache
-function! SetupCtrlP()
-  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
-    augroup CtrlPExtension
-      autocmd!
-      autocmd FocusGained  * CtrlPClearCache
-      autocmd BufWritePost * CtrlPClearCache
-    augroup END
-  endif
-endfunction
-if has("autocmd")
-  autocmd VimEnter * :call SetupCtrlP()
-endif
+"function! SetupCtrlP()
+  "if exists("g:loaded_ctrlp") && g:loaded_ctrlp
+    "augroup CtrlPExtension
+      "autocmd!
+      "autocmd FocusGained  * CtrlPClearCache
+      "autocmd BufWritePost * CtrlPClearCache
+    "augroup END
+  "endif
+"endfunction
+"if has("autocmd")
+  "autocmd VimEnter * :call SetupCtrlP()
+"endif
 
-"# mapping
-map <C-t> :CtrlP<CR>
+""# mapping
+"map <C-t> :CtrlP<CR>
 
-"## Tagbar
+"## Tagbar -------------------
 
 "# mapping
 nmap <leader>i :TagbarToggle<CR>
+
+"## FZF
+
+"#mapping
+nnoremap <C-t> :FZF<CR>
 
 
 "## Easymotion ---------
