@@ -276,3 +276,7 @@ let test#strategy = "vimux"
 "let g:VimuxUseNearest = 0
 let g:VimuxHeight = "40"
 
+"## Rubocop-vim
+
+"# mapping
+nmap <silent> <leader>r :RuboCop<CR>
