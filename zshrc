@@ -119,6 +119,7 @@ alias rg='rails generate'
 alias rgc='rails generate controller'
 alias rgm='rails generate migration'
 alias rgs='rails generate scaffold'
+alias bi='bundle install'
 
 # other aliases
 alias hp='haroopad'
