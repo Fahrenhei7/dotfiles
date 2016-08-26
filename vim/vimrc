@@ -46,13 +46,14 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " set foldmethod from manual to syntax
 set foldmethod=syntax
 
-"set folding save state
-autocmd BufWinLeave .* mkview
-autocmd BufWinEnter .* silent loadview
-
 " disable autofolding on open file
 set nofoldenable
 set foldlevelstart=99
+
+"set folding save state
+"autocmd BufWinLeave *.* mkview!
+"autocmd BufWinEnter *.* silent loadview
+
 "### mapping
 
 "## leader key mapping
@@ -300,3 +301,11 @@ let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'jruby']
 let g:syntastic_mode_map = { 'mode': 'passive' }
 "# mapping
 nmap <silent> <leader>r :SyntasticToggleMode<CR>
+
+"## emmet
+"only html files
+let g:user_emmet_install_global = 0
+autocmd FileType html EmmetInstall
+"# mapping
+let g:user_emmet_expandabbr_key='<Tab>'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")

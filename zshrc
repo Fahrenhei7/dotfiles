@@ -123,6 +123,7 @@ alias bi='bundle install'
 
 # other aliases
 alias hp='haroopad'
+alias kr='killall plasmashell && kstart plasmashell'
 
 
 

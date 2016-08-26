@@ -1,0 +1,453 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <silent> <BS> =AutoPairsDelete()
+nnoremap <buffer> <silent> g} :exe        "ptjump =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> } :exe          "ptag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g] :exe      "stselect =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g :exe        "stjump =RubyCursorIdentifier()"
+nnoremap <buffer> <silent>  :exe v:count1."stag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> ] :exe v:count1."stag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent>  :exe  v:count1."tag =RubyCursorIdentifier()"
+inoremap <buffer> <silent> î :call AutoPairsJump()a
+inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
+inoremap <buffer> <silent> â =AutoPairsBackInsert()
+inoremap <buffer> <silent> å =AutoPairsFastWrap()
+nnoremap <buffer> <silent> g] :exe       "tselect =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g :exe         "tjump =RubyCursorIdentifier()"
+inoremap <buffer> <silent>  =AutoPairsDelete()
+inoremap <buffer> <silent>   =AutoPairsSpace()
+inoremap <buffer> <silent> " =AutoPairsInsert('"')
+inoremap <buffer> <silent> ' =AutoPairsInsert('''')
+inoremap <buffer> <silent> ( =AutoPairsInsert('(')
+inoremap <buffer> <silent> ) =AutoPairsInsert(')')
+noremap <buffer> <silent> î :call AutoPairsJump()
+noremap <buffer> <silent> ð :call AutoPairsToggle()
+inoremap <buffer> <silent> [ =AutoPairsInsert('[')
+inoremap <buffer> <silent> ] =AutoPairsInsert(']')
+inoremap <buffer> <silent> ` =AutoPairsInsert('`')
+inoremap <buffer> <silent> { =AutoPairsInsert('{')
+inoremap <buffer> <silent> } =AutoPairsInsert('}')
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=RubyBalloonexpr()
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=80
+setlocal comments=:#
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=inc
+setlocal conceallevel=2
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal cursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'ruby'
+setlocal filetype=ruby
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=ql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=^\\s*\\<\\(load\\>\\|require\\>\\|autoload\\s*:\\=[\"']\\=\\h\\w*[\"']\\=,\\)
+setlocal includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.rb','')
+setlocal indentexpr=GetRubyIndent(v:lnum)
+setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=end,=else,=elsif,=when,=ensure,=rescue,==begin,==end
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=ri
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+setlocal number
+setlocal numberwidth=2
+setlocal omnifunc=rubycomplete#Complete
+setlocal path=~/.rvm/gems/ruby-2.3.1@global/gems/did_you_mean-1.0.0/lib,~/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0,~/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/x86_64-linux,~/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby,~/.rvm/rubies/ruby-2.3.1/lib/ruby/vendor_ruby/2.3.0,~/.rvm/rubies/ruby-2.3.1/lib/ruby/vendor_ruby/2.3.0/x86_64-linux,~/.rvm/rubies/ruby-2.3.1/lib/ruby/vendor_ruby,~/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0,~/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/x86_64-linux
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!airline#statusline(2)
+setlocal suffixesadd=.rb
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'ruby'
+setlocal syntax=ruby
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tags=./tags,./TAGS,tags,TAGS,~/.rvm/gems/ruby-2.3.1@global/gems/did_you_mean-1.0.0/lib/tags,~/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/tags,~/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/x86_64-linux/tags,~/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/tags,~/.rvm/rubies/ruby-2.3.1/lib/ruby/vendor_ruby/2.3.0/tags,~/.rvm/rubies/ruby-2.3.1/lib/ruby/vendor_ruby/2.3.0/x86_64-linux/tags,~/.rvm/rubies/ruby-2.3.1/lib/ruby/vendor_ruby/tags,~/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/tags,~/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/x86_64-linux/tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+12,14fold
+11,18fold
+21,23fold
+20,27fold
+7,28fold
+36,39fold
+35,40fold
+43,46fold
+49,51fold
+48,52fold
+42,53fold
+56,59fold
+55,60fold
+66,69fold
+71,73fold
+70,74fold
+62,75fold
+80,83fold
+85,87fold
+84,88fold
+77,89fold
+94,97fold
+98,102fold
+91,103fold
+30,104fold
+110,112fold
+119,122fold
+118,123fold
+129,132fold
+134,136fold
+133,137fold
+141,143fold
+138,144fold
+148,150fold
+145,151fold
+126,152fold
+156,159fold
+161,163fold
+160,164fold
+153,165fold
+125,166fold
+171,173fold
+174,176fold
+168,177fold
+184,186fold
+187,190fold
+180,191fold
+194,196fold
+199,201fold
+202,205fold
+193,206fold
+179,207fold
+212,215fold
+216,219fold
+209,220fold
+223,226fold
+227,231fold
+232,236fold
+238,240fold
+237,241fold
+222,242fold
+116,243fold
+250,252fold
+255,258fold
+254,259fold
+262,265fold
+268,270fold
+267,271fold
+261,272fold
+275,278fold
+274,279fold
+284,287fold
+288,292fold
+281,293fold
+298,301fold
+302,305fold
+295,306fold
+312,315fold
+316,320fold
+321,325fold
+327,329fold
+326,330fold
+311,331fold
+334,338fold
+332,339fold
+341,344fold
+345,349fold
+350,354fold
+356,358fold
+355,359fold
+340,360fold
+310,361fold
+367,370fold
+372,374fold
+371,375fold
+376,380fold
+381,385fold
+363,386fold
+391,394fold
+399,402fold
+399,402fold
+396,398fold
+395,399fold
+400,404fold
+405,409fold
+387,410fold
+308,411fold
+245,412fold
+106,413fold
+3,414fold
+3
+normal! zo
+7
+normal! zo
+11
+normal! zo
+11
+normal! zc
+20
+normal! zo
+20
+normal! zc
+7
+normal! zc
+30
+normal! zo
+35
+normal! zo
+35
+normal! zc
+42
+normal! zo
+48
+normal! zo
+48
+normal! zc
+42
+normal! zc
+55
+normal! zo
+55
+normal! zc
+62
+normal! zo
+70
+normal! zo
+70
+normal! zc
+62
+normal! zc
+77
+normal! zo
+84
+normal! zo
+84
+normal! zc
+77
+normal! zc
+91
+normal! zo
+94
+normal! zo
+98
+normal! zo
+106
+normal! zo
+116
+normal! zo
+118
+normal! zo
+118
+normal! zc
+125
+normal! zo
+126
+normal! zo
+133
+normal! zo
+133
+normal! zc
+138
+normal! zo
+138
+normal! zc
+145
+normal! zo
+145
+normal! zc
+153
+normal! zo
+160
+normal! zo
+160
+normal! zc
+168
+normal! zo
+168
+normal! zc
+179
+normal! zo
+180
+normal! zo
+184
+normal! zo
+187
+normal! zo
+193
+normal! zo
+193
+normal! zc
+209
+normal! zo
+209
+normal! zc
+222
+normal! zo
+227
+normal! zo
+232
+normal! zo
+237
+normal! zo
+238
+normal! zo
+245
+normal! zo
+254
+normal! zo
+254
+normal! zc
+261
+normal! zo
+267
+normal! zo
+267
+normal! zc
+261
+normal! zc
+274
+normal! zo
+274
+normal! zc
+281
+normal! zo
+281
+normal! zc
+295
+normal! zo
+295
+normal! zc
+308
+normal! zo
+310
+normal! zo
+311
+normal! zo
+316
+normal! zo
+326
+normal! zo
+326
+normal! zc
+332
+normal! zo
+334
+normal! zo
+340
+normal! zo
+345
+normal! zo
+355
+normal! zo
+355
+normal! zc
+363
+normal! zo
+367
+normal! zo
+371
+normal! zo
+372
+normal! zo
+376
+normal! zo
+381
+normal! zo
+387
+normal! zo
+391
+normal! zo
+395
+normal! zo
+396
+normal! zo
+399
+normal! zo
+399
+normal! zo
+400
+normal! zo
+405
+normal! zo
+let s:l = 311 - ((61 * winheight(0) + 16) / 33)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+311
+normal! 0
+lcd ~/Dropbox/localstorage/web_apps/quest_app
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :
