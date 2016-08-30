@@ -81,7 +81,9 @@ vnoremap Q :norm @q<cr>
 "---------------------
 
 " colorscheme settings
+
 colorscheme monokai
+"color dracula
 set t_Co=256
 
 
@@ -307,5 +309,5 @@ nmap <silent> <leader>r :SyntasticToggleMode<CR>
 let g:user_emmet_install_global = 0
 autocmd FileType html EmmetInstall
 "# mapping
-let g:user_emmet_expandabbr_key='<Tab>'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+let g:user_emmet_expandabbr_key='<C-a>'
+"autocmd FileType html imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
