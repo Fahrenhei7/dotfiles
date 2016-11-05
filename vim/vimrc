@@ -316,3 +316,6 @@ let g:user_emmet_expandabbr_key='<C-a>'
 nmap <leader>g :Gist -l<CR>
 let g:gist_get_multiplefile = 1
 
+
+" airline
+let g:airline_powerline_fonts = 1
