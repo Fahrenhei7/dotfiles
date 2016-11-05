@@ -291,9 +291,9 @@ let g:VimuxHeight = "40"
 "## syntastic
 
 "# settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+ set statusline+=%#warningmsg#
+ set statusline+=%{SyntasticStatuslineFlag()}
+ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -313,4 +313,6 @@ let g:user_emmet_expandabbr_key='<C-a>'
 "autocmd FileType html imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 "## vim gist
-nmap <leader>g :Gist -l
+nmap <leader>g :Gist -l<CR>
+let g:gist_get_multiplefile = 1
+

@@ -123,8 +123,10 @@ alias bi='bundle install'
 
 # other aliases
 alias hp='haroopad'
-alias kr='killall plasmashell && kstart plasmashell'
 alias wi='google-chrome-stable ~/localstorage/wiki.html'
+alias kr='killall plasmashell && kstart plasmashell'
+alias ra='ranger'
+alias curl='noglob curl'
 
 
 
