@@ -84,6 +84,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH="~/localstorage/golang"
 
 #tmux attach &> /dev/null
 
@@ -129,26 +131,6 @@ alias hp='haroopad'
 alias kr='killall plasmashell && kstart plasmashell'
 alias ra='ranger'
 alias curl='noglob curl'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
