@@ -320,3 +320,6 @@ let g:gist_get_multiplefile = 1
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" gopath
+let g:go_bin_path = expand("/usr/local/go")
