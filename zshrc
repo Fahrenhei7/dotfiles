@@ -106,6 +106,7 @@ alias gp='git push'
 alias gcl='git clone'
 alias gch='git checkout'
 alias gpu='git pull'
+alias gl='git log --graph --abbrev-commit --decorate --date=relative --all'
 
 # vim aliases
 alias vi='vim'
