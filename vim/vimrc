@@ -82,8 +82,7 @@ vnoremap Q :norm @q<cr>
 
 " colorscheme settings
 
-colorscheme monokai
-"color dracula
+colorscheme dracula
 set t_Co=256
 
 
