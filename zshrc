@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH="$HOME/localstorage/golang"
+export GOPATH="$HOME/Dropbox/localstorage/golang"
 
 #tmux attach &> /dev/null
 
