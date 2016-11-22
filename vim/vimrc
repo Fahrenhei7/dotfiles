@@ -278,11 +278,13 @@ let test#strategy = "vimux"
 
 "## vimux
 
-" mappong
+" mapping
 
 "# settings
 "let g:VimuxUseNearest = 0
-let g:VimuxHeight = "40"
+let g:VimuxHeight = "25"
+"let g:VimuxWidth = "20"
+let g:VimuxOrientation = "h"
 
 "## Rubocop-vim
 
