@@ -132,6 +132,7 @@ alias hp='haroopad'
 alias kr='killall plasmashell && kstart plasmashell'
 alias ra='ranger'
 alias curl='noglob curl'
+alias a='ansible'
 
 
 
