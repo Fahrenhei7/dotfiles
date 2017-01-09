@@ -1,144 +1,87 @@
-" set default
-set nocompatible
+"-----------------------------
+" => General
+"-----------------------------
 
-" init pathogen
+set nocompatible
+set encoding=utf-8
+
 execute pathogen#infect()
 filetype plugin indent on
 syntax on
 
-runtime macros/matchit.vim
+set ruler
+set laststatus=2
 
-" set encoding
-set encoding=utf-8
-
-" performance settings
 set re=1
 set lazyredraw
 
-" indent settings
 set modelines=0
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" always display status of the line
-set laststatus=2
-
-" set line numbers
 set number
-set numberwidth=2
+set numberwidth=1
 
-" make mouse work
-set mouse=a
-
-" highlight column, line and length-line
 set cursorline
 " set cursorcolumn
 set cc=80
 
-" make backspace work
 set backspace=indent,eol,start
 
-" settig relative nubmer
-"set relativenumber
-
-" disable autocomment on newline
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" set foldmethod from manual to syntax
-set foldmethod=syntax
-
-" disable autofolding on open file
+set foldmethod=manual
 set nofoldenable
 set foldlevelstart=99
 
-"set folding save state
-"autocmd BufWinLeave *.* mkview!
-"autocmd BufWinEnter *.* silent loadview
-
-"### mapping
-
-"## leader key mapping
-"# set leader key
-let mapleader = "\<Space>"
-
-nnoremap <leader>r zR
-
-"## non-leader key mapping
-
-"# escape input mode with jj
-inoremap jj <ESC>
-
-"# tab switch
-nnoremap H gT
-nnoremap L gt
-
-"# ctrl-c to copy in sys buffer from visual mode
-vmap <C-c> "+y
-
-"# macroses map
-nnoremap Q @q
-vnoremap Q :norm @q<cr>
-
-"---------------------
-
-" colorscheme settings
-
-colorscheme dracula
+colorscheme gruvbox
 set t_Co=256
 
+"-----------------------------
+" => Mapping
+"-----------------------------
 
-"### plugin settings
+let mapleader = "\<Space>"
 
-"## NERDtree -----------------
+inoremap jj <ESC>
+nnoremap H gT
+nnoremap L gt
+nnoremap Q @q
+vnoremap Q :norm @q<CR>
 
-"# mapping
 map <C-n> :NERDTreeToggle<CR>
 
-"# autostart nerdtree
+" NERDcommenter
+map <C-_> <leader>c<Space>
+
+nnoremap <leader>b :Autoformat<CR>
+
+nmap <leader>i :TagbarToggle<CR>
+
+nnoremap <C-t> :FZF<CR>
+
+map  <Leader>s <Plug>(easymotion-bd-f)
+nmap <Leader>s <Plug>(easymotion-overwin-f)
+
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+
+nmap <silent> <leader>x :SyntasticToggleMode<CR>
+"-----------------------------
+" => Plugins
+"-----------------------------
 autocmd VimEnter * NERDTree
-
-"# nerdtree window size
 let g:NERDTreeWinSize = 27
-
-"# other settings
 autocmd VimEnter * wincmd p
 autocmd StdinReadPre * let s:std_in=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"## NERDcommenter -----------
-
-"# mapping
-map <C-_> <leader>c<Space>
-
-"## git gutter -------------
-
-"# other settings
 let g:gitgutter_realtime = 1
 
-"## autoformat ------------
-
-"# mapping
-nnoremap <leader>b :Autoformat<CR>
-
-"## table mode ------------
-
-"# mapping
-"nnoremap <leader>t :TableModeToggle<CR>
-"nnoremap <leader>tr :TableModeRealign<CR>
-
-"# set cornet
 let g:table_mode_corner="|"
 
-"## snipmate -------------
-
-"# mapping
-imap <C-j> <Plug>snipMateNextOrTrigger
-smap <C-j> <Plug>snipMateNextOrTrigger
-
-"## neocomplete ---------
-
-"# settings
+" neocomplete
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -146,41 +89,33 @@ let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-"-------
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#force_overwrite_completefunc = 1
 let g:neocomplete#enable_fuzzy_completion = 1
 let g:neocomplete_enable_fuzzy_completion_start_length = 2
-let g:neocomplete_enable_camel_case_completion = 0
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#max_list = 10
-let g:neocomplete#force_overwrite_completefunc = 1
-let g:neocomplete#enable_auto_select = 0
-"------
+let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplcache_skip_auto_completion_time = ""
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-"-----
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
       \ 'default' : '',
       \ 'vimshell' : $HOME.'/.vimshell_hist',
       \ 'scheme' : $HOME.'/.gosh_completions'
       \ }
-"-----
+
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-"-----
+
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
-"-----
+
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -194,110 +129,49 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-"-----
+
 " Enable omni completion.
+
+if has("autocmd")
+  autocmd FileType ruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+  "autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  "autocmd FileType javascript setlocal omnifunc=tern#Complete
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+endif
+
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-"----
+
+
+
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-"----
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-"## CtrlP ---------------
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
 
-"# autoclear cache
-"function! SetupCtrlP()
-  "if exists("g:loaded_ctrlp") && g:loaded_ctrlp
-    "augroup CtrlPExtension
-      "autocmd!
-      "autocmd FocusGained  * CtrlPClearCache
-      "autocmd BufWritePost * CtrlPClearCache
-    "augroup END
-  "endif
-"endfunction
-"if has("autocmd")
-  "autocmd VimEnter * :call SetupCtrlP()
-"endif
-
-""# mapping
-"map <C-t> :CtrlP<CR>
-
-"## Tagbar -------------------
-
-"# mapping
-nmap <leader>i :TagbarToggle<CR>
-
-"## FZF
-
-"#mapping
-nnoremap <C-t> :FZF<CR>
+"
+" neocomplete end --------------------------------------------
+let g:tern_set_omni_function = 1
 
 
-"## Easymotion ---------
-
-"# mapping
-" <Leader>s{char} to move to {char}
-map  <Leader>s <Plug>(easymotion-bd-f)
-nmap <Leader>s <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-"nmap s <Plug>(easymotion-overwin-f2)
-
-" Move to line
-"map <Leader>l <Plug>(easymotion-bd-jk)
-"nmap <Leader>l <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-
-"## vim-test
-
-"# mapping
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-" nmap <silent> <leader>g :TestVisit<CR>
-
-"make test commands execute using vimux
 let test#strategy = "vimux"
 
-"## vimux
-
-" mapping
-
-"# settings
-"let g:VimuxUseNearest = 0
 let g:VimuxHeight = "25"
-"let g:VimuxWidth = "20"
 let g:VimuxOrientation = "h"
 
-"## Rubocop-vim
-
-"# mapping
-"nmap <silent> <leader>r :RuboCop<CR>
-
-"## syntastic
-
-"# settings
- set statusline+=%#warningmsg#
- set statusline+=%{SyntasticStatuslineFlag()}
- set statusline+=%*
-
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -308,31 +182,17 @@ let g:syntastic_loc_list_height=3
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'jruby']
 let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
-"# mapping
-nmap <silent> <leader>x :SyntasticToggleMode<CR>
 
-"## emmet
-"only html files
-let g:user_emmet_install_global = 0
-autocmd FileType html EmmetInstall
-"# mapping
-let g:user_emmet_expandabbr_key='<C-a>'
-"autocmd FileType html imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-
-"## vim gist
-nmap <leader>g :Gist -l<CR>
 let g:gist_get_multiplefile = 1
 
-
-" airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" go
+" GOlang config
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
- au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
