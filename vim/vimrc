@@ -33,6 +33,10 @@ set foldmethod=manual
 set nofoldenable
 set foldlevelstart=99
 
+set t_ZH=^[[3m
+set t_ZR=^[[23m
+highlight Comment cterm=italic
+
 colorscheme gruvbox
 set t_Co=256
 
