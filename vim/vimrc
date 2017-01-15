@@ -110,6 +110,13 @@ let g:gist_get_multiplefile = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+" YCM with css omni
+let g:ycm_semantic_triggers = {
+    \   'css': [ 're!^\s+', 're!:\s+' ],
+    \   'sass': [ 're!^\s+', 're!:\s+' ],
+    \   'scss': [ 're!^\s+', 're!:\s+' ],
+    \ }
+
 " GOlang config
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
