@@ -117,6 +117,12 @@ let g:ycm_semantic_triggers = {
     \   'scss': [ 're!^\s+', 're!:\s+' ],
     \ }
 
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+
 " GOlang config
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
