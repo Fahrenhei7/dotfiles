@@ -41,6 +41,9 @@ set background=dark
 colorscheme gruvbox
 set t_Co=256
 
+set hlsearch
+set incsearch
+
 "-----------------------------
 " => Mapping
 "-----------------------------
@@ -52,6 +55,8 @@ nnoremap H gT
 nnoremap L gt
 nnoremap Q @q
 vnoremap Q :norm @q<CR>
+
+nnoremap <F3> :noh<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 
