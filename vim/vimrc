@@ -33,11 +33,12 @@ set foldmethod=manual
 set nofoldenable
 set foldlevelstart=99
 
-"set t_ZH=^[[3m
-"set t_ZR=^[[23m
-"highlight Comment cterm=italic
+" set t_ZH=^[[3m
+" set t_ZR=^[[23m
+" highlight Comment cterm=italic
 
 set background=dark
+let g:gruvbox_italic=1
 colorscheme gruvbox
 set t_Co=256
 
@@ -91,10 +92,10 @@ let g:gitgutter_realtime = 1
 
 let g:table_mode_corner="|"
 
-let test#strategy = "vimux"
+let test#strategy = "vimshell"
 
-let g:VimuxHeight = "25"
-let g:VimuxOrientation = "h"
+" let g:VimuxHeight = "25"
+" let g:VimuxOrientation = "h"
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

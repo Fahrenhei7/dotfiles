@@ -6,6 +6,7 @@
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+# ZSH_THEME="mrtazz"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -89,9 +90,9 @@ export GOPATH="$HOME/Dropbox/localstorage/golang"
 
 #tmux attach &> /dev/null
 
-if [[ ! $TERM =~ screen ]]; then
-  exec tmux -2
-fi
+# if [[ ! $TERM =~ screen ]]; then
+#   exec tmux -2
+# fi
 
 
 
@@ -113,6 +114,7 @@ alias vi='vim'
 alias cvim='vim -u NONE'
 alias vimc='vim ~/.vimrc'
 alias vima='vim +96 ~/.zshrc'
+alias vimi='vim ~/.config/i3/config'
 
 # rails aliases
 alias rs='rails server'
