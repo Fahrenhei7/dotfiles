@@ -50,7 +50,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git vi-mode)
 
 # User configuration
 
@@ -66,7 +66,7 @@ source $ZSH/oh-my-zsh.sh
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='mvim'
+   export EDITOR='vim'
  fi
 
 # Compilation flags
@@ -131,10 +131,10 @@ alias bi='bundle install'
 
 # other aliases
 alias hp='haroopad'
-alias kr='killall plasmashell && kstart plasmashell'
 alias ra='ranger'
 alias curl='noglob curl'
 alias a='ansible'
+alias h='less +G -J ~/.zsh_history'
 
 
 
