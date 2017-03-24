@@ -9,35 +9,45 @@ execute pathogen#infect()
 filetype plugin indent on
 syntax on
 
-set ruler
+" Always displaying status line
 set laststatus=2
 
+" Performance stuff
 set re=1
 set lazyredraw
 
+" Indentation configurations
 set modelines=0
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Show row numbers
 set number
 set numberwidth=1
 
+" Cursor line highlight
 set cursorline
 " set cursorcolumn
 set cc=80
 
 set backspace=indent,eol,start
 
-set foldmethod=manual
+" Folding configuration
+set foldmethod=indent
 set nofoldenable
 set foldlevelstart=99
 
+" Colorscheme configuration
 set background=dark
-let g:gruvbox_italic=1
+" let g:gruvbox_italic=1
 colorscheme gruvbox
 set t_Co=256
+highlight Comment cterm=italic
 
+" sett_ZH=^[[3m
+" sett_ZR=^[[23m
+" Real-time highlight when searching with / or ?
 set hlsearch
 set incsearch
 
@@ -57,7 +67,7 @@ nnoremap <F3> :noh<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 
-" NERDcommenter
+" Remaping NERDcommenter
 map <C-_> <leader>c<Space>
 
 nnoremap <leader>b :Autoformat<CR>
@@ -75,6 +85,7 @@ nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 
 nmap <silent> <leader>x :SyntasticToggleMode<CR>
+
 "-----------------------------
 " => Plugins
 "-----------------------------
@@ -88,13 +99,16 @@ let g:gitgutter_realtime = 1
 
 let g:table_mode_corner="|"
 
-let test#strategy = "vimshell"
+let test#strategy = "vimux"
 
 " let g:VimuxHeight = "25"
 " let g:VimuxOrientation = "h"
 
+" Highlighting indented lines configuration
 autocmd VimEnter * IndentGuidesEnable
 let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_exclude_filetypes = ['nerdtree']
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -111,8 +125,10 @@ let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'jruby']
 let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
 let g:syntastic_javascript_checkers = ['eslint']
 
+" Gist configuration
 let g:gist_get_multiplefile = 1
 
+" Airline configuration
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 

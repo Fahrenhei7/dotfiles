@@ -88,6 +88,7 @@ export GOPATH="$HOME/golang"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+set TERM=rxvt-unicode-256color
 
 #tmux attach &> /dev/null
 
